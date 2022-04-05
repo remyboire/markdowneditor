@@ -4,10 +4,11 @@ import Modal from './Modal'
 import './header.css'
 import iconDoc from '../assets/icon-document.svg'
 import iconDelete from '../assets/icon-delete.svg'
+import iconCheck from '../assets/icon-check.svg'
 import iconSave from '../assets/icon-save.svg'
 
 export default function Header(props) {
-	const { docs, currentDoc, handleChangeName, handleDeleteDoc, handletoggleSidebar } = props
+	const { docs, currentDoc, handleChangeName, handleDeleteDoc, handleSaveClick, handletoggleSidebar, changesSaved } = props
 	const doc = Object.getOwnPropertyDescriptors(docs.filter((doc) => doc.id === currentDoc)[0])
 
 	const { isShowing, toggleModal } = ModalUse()
@@ -18,14 +19,8 @@ export default function Header(props) {
 				<button className='burger' onClick={handletoggleSidebar}>
 					<div></div>
 				</button>
-				{/* <button className='btn-burger' onClick={handletoggleSidebar}>
-					<span className='bar bar--1'></span>
-					<span className='bar bar--2'></span>
-					<span className='bar bar--3'></span>
-				</button> */}
 			</div>
-
-			<h1 className='logo'>MARKDOWN</h1>
+			<h1 className='logo logo-desktop'>MARKDOWN</h1>
 			<span className='document-infos'>
 				<span className='document-logo'>
 					<img src={iconDoc} alt='show preview' />
@@ -42,8 +37,11 @@ export default function Header(props) {
 			<Modal isShowing={isShowing} hide={toggleModal} handleDeleteDoc={handleDeleteDoc} docs={docs} currentDoc={currentDoc} />
 
 			<button className='button save-doc'>
-				<img src={iconSave} />
-				Save Changes
+				{changesSaved ? <img src={iconCheck} /> : <img src={iconSave} />}
+
+				<span className='button-text' onClick={handleSaveClick}>
+					{changesSaved ? 'Changes saved' : 'Save Changes'}
+				</span>
 			</button>
 		</header>
 	)

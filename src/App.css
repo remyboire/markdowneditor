@@ -14,6 +14,7 @@
 	--font-primary: 'Roboto', sans-serif;
 	--font-secondary: 'Roboto Slab', monospace;
 	--sidebar-transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	--media-mobile: 375px;
 }
 .App {
 	width: 100%;
@@ -21,6 +22,10 @@
 	font-family: var(--font-primary);
 	font-size: 15px;
 	position: relative;
+}
+[data-theme='dark'].App {
+	background-color: var(--color-1000);
+	color: var(--color-400);
 }
 main.sidebar-open {
 	transform: translate3d(250px, 0, 0);

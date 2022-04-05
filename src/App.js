@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import Editor from './components/Editor'
+import DownloadFile from './components/DownloadFile'
 import data from './assets/data'
 import { nanoid } from 'nanoid'
 import useLocalStorage from 'use-local-storage'
@@ -30,6 +31,7 @@ export default function App() {
 
 	const [currentDoc, setCurrentDoc] = React.useState(localStorage.getItem('currentDoc') ? localStorage.getItem('currentDoc') : docs[0].id)
 	const [viewSidebar, setViewSidebar] = React.useState(localStorage.getItem('viewSidebar') ? JSON.parse(localStorage.getItem('viewSidebar')) : false)
+	const [changesSaved, setChangesSaved] = React.useState(false)
 
 	const newDoc = {
 		id: nanoid(),
@@ -51,8 +53,9 @@ export default function App() {
 		setCurrentDoc(doc)
 	}
 	function handleChanges(value) {
+		console.log('handle changes')
 		setToFirstPlace()
-
+		setChangesSaved(() => false)
 		setDocs((prevDocs) => {
 			const newDocs = [...prevDocs]
 			Object.defineProperties(newDocs.filter((doc) => doc.id === currentDoc)[0], {
@@ -108,9 +111,10 @@ export default function App() {
 		localStorage.setItem('currentDoc', currentDoc)
 	}, [currentDoc])
 
-	React.useEffect(() => {
+	function handleSaveClick() {
 		localStorage.setItem('docs', JSON.stringify(docs))
-	}, [docs])
+		setChangesSaved(true)
+	}
 
 	React.useEffect(() => {
 		localStorage.setItem('viewSidebar', viewSidebar)
@@ -131,8 +135,17 @@ export default function App() {
 
 			<main className={viewSidebar ? 'main sidebar-open' : 'main'}>
 				{/* <DesignSystem /> */}
-				<Header docs={docs} currentDoc={currentDoc} handleChangeName={handleChangeName} handleDeleteDoc={handleDeleteDoc} handletoggleSidebar={toggleSidebar} />
+				<Header
+					docs={docs}
+					currentDoc={currentDoc}
+					handleChangeName={handleChangeName}
+					handleDeleteDoc={handleDeleteDoc}
+					handleSaveClick={handleSaveClick}
+					handletoggleSidebar={toggleSidebar}
+					changesSaved={changesSaved}
+				/>
 				<Editor docs={docs} currentDoc={currentDoc} handleChanges={handleChanges} />
+				{changesSaved ? <DownloadFile docs={docs} currentDoc={currentDoc} /> : null}
 			</main>
 		</div>
 	)

@@ -31,6 +31,7 @@ export default function Sidebar(props) {
 	return (
 		<>
 			<div className={viewSidebar ? 'sidebar sidebar-open' : 'sidebar'}>
+				<h1 className='logo logo-mobile'>MARKDOWN</h1>
 				<h2 className='heading-S color-500'>MY DOCUMENTS</h2>
 				<button className='button width-100' onClick={handleNewDoc}>
 					+ New Document
