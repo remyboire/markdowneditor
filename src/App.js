@@ -3,9 +3,9 @@ import './App.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import Editor from './components/Editor'
-import DesignSystem from './components/DesignSystem'
 import data from './assets/data'
 import { nanoid } from 'nanoid'
+import useLocalStorage from 'use-local-storage'
 
 // MARKDOWN EDITOR
 // HEADER avec menu burger, logo, document name, delete, save
@@ -20,6 +20,12 @@ import { nanoid } from 'nanoid'
 // local storage is a stringified JSON object
 
 export default function App() {
+	const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+	const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light')
+
+	function switchTheme() {
+		setTheme(theme === 'light' ? 'dark' : 'light')
+	}
 	const [docs, setDocs] = React.useState(localStorage.getItem('docs') ? JSON.parse(localStorage.getItem('docs')) : data)
 
 	const [currentDoc, setCurrentDoc] = React.useState(localStorage.getItem('currentDoc') ? localStorage.getItem('currentDoc') : docs[0].id)
@@ -37,7 +43,8 @@ export default function App() {
 	}
 
 	function handleNewDoc() {
-		setDocs((prevDocs) => [...prevDocs, newDoc])
+		setDocs((prevDocs) => [newDoc, ...prevDocs])
+		setCurrentDoc(newDoc.id)
 	}
 	// console.log(docs)
 	function handleSelectDoc(doc) {
@@ -79,13 +86,18 @@ export default function App() {
 	}
 	function handleDeleteDoc(doc) {
 		const newDocs = [...docs]
-		newDocs.splice(newDocs.indexOf(doc), 1)
-		console.log(newDocs)
+		newDocs.splice(
+			newDocs.findIndex((document) => document.id === doc),
+			1
+		)
+		console.log(currentDoc)
+		console.log(doc)
+		if (currentDoc === doc) setCurrentDoc(newDocs[0].id)
 		if (newDocs.length === 0) {
 			newDocs.push(newDoc)
 		}
+
 		setDocs(newDocs)
-		setCurrentDoc(newDocs[0].id)
 	}
 
 	function toggleSidebar() {
@@ -105,7 +117,7 @@ export default function App() {
 	}, [viewSidebar])
 
 	return (
-		<div className='App'>
+		<div className='App' data-theme={theme}>
 			<Sidebar
 				docs={docs}
 				currentDoc={currentDoc}
@@ -113,6 +125,8 @@ export default function App() {
 				handleSelectDoc={handleSelectDoc}
 				handleDeleteDoc={handleDeleteDoc}
 				viewSidebar={viewSidebar}
+				theme={theme}
+				switchTheme={switchTheme}
 			/>
 
 			<main className={viewSidebar ? 'main sidebar-open' : 'main'}>

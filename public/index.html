@@ -27,8 +27,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 		<title>React App</title>
+
+		<style>
+			body.preload * {
+				animation-duration: 0s !important;
+				-webkit-animation-duration: 0s !important;
+				transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
+			}
+		</style>
 	</head>
-	<body>
+	<body class="preload">
+		<script>
+			setTimeout(function () {
+				document.body.className = ''
+			}, 500)
+		</script>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
 		<!--

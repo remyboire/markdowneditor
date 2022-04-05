@@ -12,6 +12,7 @@
     "react-mde": "^11.5.0",
     "react-scripts": "5.0.0",
     "showdown": "^2.0.3",
+    "use-local-storage": "^2.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -15,11 +15,14 @@ export default function Header(props) {
 	return (
 		<header className='header'>
 			<div className='burger-wrapper'>
-				<button className='btn-burger' onClick={handletoggleSidebar}>
+				<button className='burger' onClick={handletoggleSidebar}>
+					<div></div>
+				</button>
+				{/* <button className='btn-burger' onClick={handletoggleSidebar}>
 					<span className='bar bar--1'></span>
 					<span className='bar bar--2'></span>
 					<span className='bar bar--3'></span>
-				</button>
+				</button> */}
 			</div>
 
 			<h1 className='logo'>MARKDOWN</h1>

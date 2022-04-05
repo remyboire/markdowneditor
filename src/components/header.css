@@ -13,7 +13,7 @@
 	align-items: center;
 	background-color: var(--color-700);
 }
-.btn-burger {
+/* .btn-burger {
 	color: var(--color-900);
 	width: 30px;
 	height: 30px;
@@ -38,6 +38,41 @@
 	position: absolute;
 	transition: transform 0.6s ease;
 	width: 30px;
+} */
+
+.burger {
+	width: 30px;
+	padding: 0;
+}
+
+.burger:before,
+.burger:after,
+.burger div {
+	background: #fff;
+	content: '';
+	display: block;
+	height: 2px;
+	margin: 5px 0;
+	transition: 0.5s;
+}
+
+.burger:hover:before {
+	transform: translateY(0px) rotate(0.5turn);
+}
+.burger:hover:after {
+	transform: translateY(0px) rotate(-0.5turn);
+}
+.burger:hover div {
+	transform: scale(0);
+}
+.sidebar-open .burger:before {
+	transform: translateY(7px) rotate(1.125turn);
+}
+.sidebar-open .burger:after {
+	transform: translateY(-7px) rotate(-1.125turn);
+}
+.sidebar-open .burger div {
+	transform: scale(0);
 }
 
 .logo {
@@ -87,12 +122,28 @@
 	line-height: 18px;
 	width: 100%;
 	max-width: 300px;
+	height: 1rem;
 	flex-grow: 1;
+}
+.document-name input:hover {
+	box-shadow: 0 1px var(--color-100);
 }
 .document-name input:focus {
 	outline: none;
-	border-bottom: 1px solid var(--color-100);
-	transform: translateY(1px);
+	box-shadow: 0 1px var(--accent);
+	caret-color: var(--accent);
+}
+.modal-toggle {
+	height: 42px;
+	aspect-ratio: 1;
+	display: block;
+	border-radius: 50%;
+}
+.modal-toggle:hover {
+	background-color: var(--color-900);
+}
+.modal-toggle img {
+	margin: auto;
 }
 .save-doc {
 	margin: 0 16px;
