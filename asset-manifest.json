@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/markdowneditor/static/css/main.0ad07011.css",
-    "main.js": "/markdowneditor/static/js/main.02fb9082.js",
+    "main.css": "/markdowneditor/static/css/main.359ec505.css",
+    "main.js": "/markdowneditor/static/js/main.eb032bcc.js",
     "static/js/787.e6279602.chunk.js": "/markdowneditor/static/js/787.e6279602.chunk.js",
     "index.html": "/markdowneditor/index.html",
     "static/media/icon-light-mode.svg": "/markdowneditor/static/media/icon-light-mode.e85bf01629f3b2d8f7f64c0b610ea772.svg",
@@ -12,12 +12,12 @@
     "static/media/icon-dark-mode.svg": "/markdowneditor/static/media/icon-dark-mode.62526840c2a0758604b6b31d0567e12c.svg",
     "static/media/icon-delete.svg": "/markdowneditor/static/media/icon-delete.6cd9d07a25303a08ed78ddc5611fa0f1.svg",
     "static/media/icon-check.svg": "/markdowneditor/static/media/icon-check.9a1cb6e1d1db272f0759eebbba9a2f42.svg",
-    "main.0ad07011.css.map": "/markdowneditor/static/css/main.0ad07011.css.map",
-    "main.02fb9082.js.map": "/markdowneditor/static/js/main.02fb9082.js.map",
+    "main.359ec505.css.map": "/markdowneditor/static/css/main.359ec505.css.map",
+    "main.eb032bcc.js.map": "/markdowneditor/static/js/main.eb032bcc.js.map",
     "787.e6279602.chunk.js.map": "/markdowneditor/static/js/787.e6279602.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ad07011.css",
-    "static/js/main.02fb9082.js"
+    "static/css/main.359ec505.css",
+    "static/js/main.eb032bcc.js"
   ]
 }
