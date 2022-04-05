@@ -30,7 +30,7 @@ export default function Sidebar(props) {
 
 	return (
 		<>
-			<div className={viewSidebar ? 'sidebar sidebar-open' : 'sidebar'}>
+			<nav className={viewSidebar ? 'sidebar sidebar-open' : 'sidebar'} role='navigation'>
 				<h1 className='logo logo-mobile'>MARKDOWN</h1>
 				<h2 className='heading-S color-500'>MY DOCUMENTS</h2>
 				<button className='button width-100' onClick={handleNewDoc}>
@@ -57,7 +57,7 @@ export default function Sidebar(props) {
 				{/* <span className='dark-mode-toggle' onClick={switchTheme}>
 					toggle dark mode
 				</span> */}
-			</div>
+			</nav>
 			<Modal isShowing={isShowing} hide={toggleModal} handleDeleteDoc={handleDeleteDoc} docs={docs} currentDoc={currentDoc} />
 		</>
 	)

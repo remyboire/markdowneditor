@@ -131,7 +131,7 @@ export default function App() {
 				switchTheme={switchTheme}
 			/>
 
-			<main className={viewSidebar ? 'main sidebar-open' : 'main'}>
+			<main className={viewSidebar ? 'main sidebar-open' : 'main'} role='main'>
 				<Header
 					docs={docs}
 					currentDoc={currentDoc}

@@ -14,11 +14,11 @@ export default function Header(props) {
 	const { isShowing, toggleModal } = ModalUse()
 
 	return (
-		<header className='header'>
+		<header className='header' role='banner'>
 			<div className='burger-wrapper'>
-				<button className='burger' onClick={handletoggleSidebar}>
-					<div></div>
-				</button>
+				<div className='burger' onClick={handletoggleSidebar}>
+					<div className='dash'></div>
+				</div>
 			</div>
 			<h1 className='logo logo-desktop'>MARKDOWN</h1>
 			<span className='document-infos'>
@@ -37,7 +37,7 @@ export default function Header(props) {
 			<Modal isShowing={isShowing} hide={toggleModal} handleDeleteDoc={handleDeleteDoc} docs={docs} currentDoc={currentDoc} />
 
 			<button className='button save-doc' onClick={handleSaveClick}>
-				{changesSaved ? <img src={iconCheck} /> : <img src={iconSave} />}
+				{changesSaved ? <img src={iconCheck} /> : <img src={iconSave} alt='' />}
 				<span className='button-text'>{changesSaved ? 'Changes saved' : 'Save Changes'}</span>
 			</button>
 		</header>

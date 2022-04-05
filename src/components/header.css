@@ -17,6 +17,7 @@
 .burger {
 	width: 30px;
 	padding: 0;
+	cursor: pointer;
 }
 
 .burger:before,
