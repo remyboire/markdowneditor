@@ -36,12 +36,9 @@ export default function Header(props) {
 			</button>
 			<Modal isShowing={isShowing} hide={toggleModal} handleDeleteDoc={handleDeleteDoc} docs={docs} currentDoc={currentDoc} />
 
-			<button className='button save-doc'>
+			<button className='button save-doc' onClick={handleSaveClick}>
 				{changesSaved ? <img src={iconCheck} /> : <img src={iconSave} />}
-
-				<span className='button-text' onClick={handleSaveClick}>
-					{changesSaved ? 'Changes saved' : 'Save Changes'}
-				</span>
+				<span className='button-text'>{changesSaved ? 'Changes saved' : 'Save Changes'}</span>
 			</button>
 		</header>
 	)

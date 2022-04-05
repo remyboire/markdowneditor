@@ -33,7 +33,7 @@ export default function Editor(props) {
 			<div className={selectedTab + ' editor-header'}>
 				<div className='editor-header-left'>MARKDOWN</div>
 				<div className='editor-header-right'>
-					PREVIEW
+					<div className='title'>PREVIEW</div>
 					<button className='preview-icon' onClick={toggleSelectedTab}>
 						<img src={selectedTab === 'preview' ? iconHidePreview : iconShowPreview} alt='show preview' />
 					</button>

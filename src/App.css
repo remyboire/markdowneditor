@@ -14,7 +14,6 @@
 	--font-primary: 'Roboto', sans-serif;
 	--font-secondary: 'Roboto Slab', monospace;
 	--sidebar-transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-	--media-mobile: 375px;
 }
 .App {
 	width: 100%;

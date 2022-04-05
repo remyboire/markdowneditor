@@ -44,8 +44,7 @@
 .download-wrapper {
 	font-family: 'Roboto Slab', monospace;
 	z-index: 100;
-	background: #fff;
-	position: relative;
+	background: #f5f5f5;
 	border-radius: 5px;
 	padding: 24px;
 }

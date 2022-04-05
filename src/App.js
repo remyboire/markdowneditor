@@ -30,18 +30,16 @@ export default function App() {
 	const [docs, setDocs] = React.useState(localStorage.getItem('docs') ? JSON.parse(localStorage.getItem('docs')) : data)
 
 	const [currentDoc, setCurrentDoc] = React.useState(localStorage.getItem('currentDoc') ? localStorage.getItem('currentDoc') : docs[0].id)
+
 	const [viewSidebar, setViewSidebar] = React.useState(localStorage.getItem('viewSidebar') ? JSON.parse(localStorage.getItem('viewSidebar')) : false)
 	const [changesSaved, setChangesSaved] = React.useState(false)
 
 	const newDoc = {
 		id: nanoid(),
 		name: 'New Document',
-		createdAt: replaceSlashs(new Date().toLocaleDateString('en-US')),
-		modifiedAt: replaceSlashs(new Date().toLocaleString('en-US')),
+		createdAt: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+		modifiedAt: new Date().toLocaleString('en-US'),
 		content: '',
-	}
-	function replaceSlashs(date) {
-		return date.replace(/\//g, '-')
 	}
 
 	function handleNewDoc() {
@@ -134,7 +132,6 @@ export default function App() {
 			/>
 
 			<main className={viewSidebar ? 'main sidebar-open' : 'main'}>
-				{/* <DesignSystem /> */}
 				<Header
 					docs={docs}
 					currentDoc={currentDoc}

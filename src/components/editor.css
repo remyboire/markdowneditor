@@ -38,6 +38,7 @@
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+	margin-left: auto;
 }
 .editor-header-right {
 	display: flex;
@@ -91,7 +92,7 @@
 	font-size: 14px;
 	line-height: 24px;
 	padding: 20px;
-	margin-bottom: 25px;
+	padding-bottom: 55px;
 }
 .mde-preview div > * {
 	margin-bottom: 20px;
@@ -191,12 +192,8 @@
 .preview .editor-header-left {
 	display: none;
 }
-/* [data-theme='dark'] * {
-	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-[data-theme='white'] * {
-	transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-} */
+
+/*  DARK THEME */
 [data-theme='dark'] .editor-header {
 	background-color: var(--color-900);
 	color: var(--color-400);
@@ -211,9 +208,47 @@
 	background-color: var(--color-800);
 	color: var(--color-100);
 }
+[data-theme='dark'] .mde-preview blockquote p a {
+	color: var(--color-100);
+}
 [data-theme='dark'] .mde-preview :is(h1, h2, h3, h4, h5, h6) {
 	color: var(--color-100);
 }
 [data-theme='dark'] .mde-text {
 	border-right: 1px solid var(--color-600);
+}
+
+@media only screen and (max-width: 640px) {
+	.mde-preview {
+		display: none;
+	}
+	.editor-header-right .title {
+		display: none;
+	}
+	.preview .mde-preview {
+		display: block;
+	}
+	.preview .editor-header-right .title {
+		display: block;
+	}
+	body,
+	#root,
+	.App,
+	.main {
+		height: 100vh;
+		overflow: hidden;
+	}
+	.editor-container,
+	.react-mde-wrapper {
+		height: 100%;
+		overflow: hidden;
+	}
+	.mde-preview {
+		overflow: scroll;
+	}
+}
+@media only screen and (min-width: 640px) {
+	.react-mde > * {
+		width: 50vw;
+	}
 }

@@ -8,6 +8,12 @@ export default function DownloadFile(props) {
 	const doc = Object.getOwnPropertyDescriptors(docs.filter((doc) => doc.id === currentDoc)[0])
 	const docContent = doc.content.value
 	const docName = doc.name.value
+
+	// id any file extension, remove it from docName
+	const extensionRemoved = docName.split('.').pop()
+	// add .md to docName
+	const docNameWithExtension = `${extensionRemoved}.md`
+
 	const [hide, setHide] = React.useState(false)
 
 	setTimeout(() => {
@@ -20,10 +26,10 @@ export default function DownloadFile(props) {
 	const downloadTxtFile = () => {
 		const element = document.createElement('a')
 		const file = new Blob([docContent], {
-			type: 'text/plain',
+			type: 'text/markdown',
 		})
 		element.href = URL.createObjectURL(file)
-		element.download = docName
+		element.download = docNameWithExtension
 		document.body.appendChild(element)
 		element.click()
 	}
