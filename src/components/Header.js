@@ -14,7 +14,7 @@ export default function Header(props) {
 	const { isShowing, toggleModal } = ModalUse()
 
 	return (
-		<header className='header' role='banner'>
+		<header className='header' role='header'>
 			<div className='burger-wrapper'>
 				<div className='burger' onClick={handletoggleSidebar}>
 					<div className='dash'></div>
